@@ -2,24 +2,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * A class that emulates a deck of cards.
  *
- * @author carl
+ * @author Carl Poole
  */
-public class Deck
-{
+public class Deck {
+
+    /**
+     * A list to store the cards in the deck.
+     */
     ArrayList<Card> deck = new ArrayList<Card>();
 
     /**
-     * Setup a traditional deck of 52 playing cards.
+     * Constructs a traditional deck of 52 playing cards.
      */
-    public Deck()
-    {
+    public Deck() {
+
         //Suits
         final int[] CLUBS = {2,3,4,5,6,7,8,9,10,11,12,13,14};
         final int[] DIAMONDS = {2,3,4,5,6,7,8,9,10,11,12,13,14};
         final int[] HEARTS = {2,3,4,5,6,7,8,9,10,11,12,13,14};
         final int[] SPADES = {2,3,4,5,6,7,8,9,10,11,12,13,14};
-        //Picture Cards
+
+        //Picture card values
         final String J = "Jack";
         final String Q = "Queen";
         final String K = "King";
@@ -27,10 +32,9 @@ public class Deck
 
         int[][] cards = new int[4][13];
 
-        for (int i = 0; i < 4; i++)
-        {
-            switch(i)
-            {
+        //Fill deck
+        for (int i = 0; i < 4; i++) {
+            switch(i) {
                 case 0: cards[0] = CLUBS;
                 case 1: cards[1] = DIAMONDS;
                 case 2: cards[2] = HEARTS;
@@ -38,11 +42,11 @@ public class Deck
             }
         }
 
+        //Assign suit, picture card values, and add cards to deck.
         for (int i = 0; i < cards.length; i++) {
             Suit suit = null;
 
-            switch(i)
-            {
+            switch(i) {
                 case 0: suit = Suit.DIAMONDS;
                     break;
                 case 1: suit = Suit.HEARTS;
@@ -55,8 +59,7 @@ public class Deck
             for (int j = 2; j < 15; j++) {
                 String card = null;
 
-                switch(j)
-                {
+                switch(j) {
                     case 11: card = J;
                         break;
                     case 12: card = Q;
@@ -74,39 +77,51 @@ public class Deck
         }
     }
 
-    public void shuffle()
-    {
+    /**
+     * Shuffles the deck of cards.
+     */
+    public void shuffle() {
         Collections.shuffle(deck);
     }
 
-    public Card draw()
-    {
-        Card card = null;
-
+    /**
+     * Draws a card from the deck, removing it after.
+     *
+     * @return The top card of the deck.
+     */
+    public Card draw() {
         if(deck.isEmpty())
             return null;
 
-        card = deck.get(0);
+        Card card = deck.get(0);
         deck.remove(0);
 
         return card;
     }
 
-    public void burn()
-    {
+    /**
+     * Burns a card from the deck (destroys top card).
+     */
+    public void burn() {
         if(!deck.isEmpty())
             deck.remove(0);
     }
 
-    public void printCards()
-    {
+    /**
+     * Prints entire deck of cards to console.
+     */
+    public void printCards() {
         for (int i = 0; i < deck.size(); i++) {
             System.out.println(deck.get(i));
         }
     }
 
-    public int getDeckCount()
-    {
+    /**
+     * Get the number of cards in the deck.
+     *
+     * @return How many cards there are in the deck.
+     */
+    public int getDeckCount() {
         return deck.size();
     }
 }

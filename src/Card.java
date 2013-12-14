@@ -1,22 +1,45 @@
 /**
+ * A class that models a playing card.
  *
- * @author carl
+ * @author Carl Poole
  */
-public class Card implements Comparable
-{
+public class Card implements Comparable{
 
-    Suit  suit;
-    String  value;
-    int     rank;
+    /**
+     * The suit of the card, E.G: HEARTS.
+     */
+    Suit suit;
+
+    /**
+     * The card point value.
+     */
+    String value;
+
+    /**
+     * The card rank.
+     */
+    int rank;
+
+    /**
+     * The card color.
+     */
     String color;
 
-    public Card()
-    {
+    /**
+     * Constructs a new default card (Joker).
+     */
+    public Card(){
         this(Suit.JOKER,"Joker",1);
     }
 
-    public Card(Suit suit, String value, int rank)
-    {
+    /**
+     * Constructs a new card.
+     *
+     * @param suit The suit of the card.
+     * @param value The value of the card.
+     * @param rank The rank of the card.
+     */
+    public Card(Suit suit, String value, int rank){
         this.suit = suit;
         this.value = value;
         this.rank = rank;
@@ -27,29 +50,58 @@ public class Card implements Comparable
             color = "Black";
     }
 
+    /**
+     * Gets the suit of the card.
+     *
+     * @return The suit of the card.
+     */
     public Suit getSuit() {
         return suit;
     }
 
+    /**
+     * Gets the card color.
+     *
+     * @return The color of the card.
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Gets the value of the card.
+     *
+     * @return The card value.
+     */
     public String getValue() {
         return value;
     }
 
+    /**
+     * Get the rank of the card.
+     *
+     * @return The card rank.
+     */
     public int getRank() {
         return rank;
     }
 
-    public String toString()
-    {
+    /**
+     * Gets a string description of the card's value and suit.
+     *
+     * @return The value and suit of the card.
+     */
+    public String toString(){
         return this.value + " of " + this.suit;
     }
 
-    public int compareTo(Object obj)
-    {
+    /**
+     * Comparator that utilizes card rank.
+     *
+     * @param obj Object to compare to.
+     * @return 1 if less-than, 0 if equal, -1 if greater-than.
+     */
+    public int compareTo(Object obj){
 
         if(!(obj instanceof Card))
             return 0;

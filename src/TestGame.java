@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 /**
- * Created by carl on 12/14/13.
+ * A game to test the Deck of Cards classes.
+ *
+ * This is a simple High/Low card game. The player sees a drawn card
+ * and decides whether to bet the next card will be higher or lower.
+ * The player wins a point if they guess correctly.
  */
 public class TestGame {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    public static void main(String args[]) {
 
         Deck d = new Deck();
         Card initial;
@@ -24,8 +25,7 @@ public class TestGame {
 
         initial = d.draw();
 
-        while(d.getDeckCount() > 0)
-        {
+        while(d.getDeckCount() > 0) {
             newCard = d.draw();
 
             while(newCard.compareTo(initial) == 0)
@@ -33,8 +33,7 @@ public class TestGame {
 
             System.out.println(initial);
 
-            while(!"H".equals(highLow) && !"L".equals(highLow))
-            {
+            while(!"H".equals(highLow) && !"L".equals(highLow)) {
 
                 if("Q".equals(highLow))
                     break;
@@ -46,13 +45,11 @@ public class TestGame {
             if("Q".equals(highLow))
                 break;
 
-            if((newCard.compareTo(initial) == 1) && "H".equals(highLow))
-            {
+            if((newCard.compareTo(initial) == 1) && "H".equals(highLow)) {
                 score++;
             }
 
-            if((newCard.compareTo(initial) == -1) && "L".equals(highLow))
-            {
+            if((newCard.compareTo(initial) == -1) && "L".equals(highLow)) {
                 score++;
             }
 
